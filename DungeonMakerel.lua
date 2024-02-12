@@ -3,8 +3,8 @@ Type "/dungeonmode" or "/dng" to toggle dungeon mode!
 Or type "/dng on" or "/dng off" to set dungeon mode on/off.
 In Dungeon Mode, right click will work ONLY on enemies.
 ]=]
-local welcome_msg = string.gsub(welcome,"\92n", "\n") --Subbing out my text editor's new line escape for the \n recognized by WoW.. i think
-print(welcome_msg)
+--local welcome_msg = string.gsub(welcome,"\92n", "\n") --Subbing out my text editor's new line escape for the \n recognized by WoW.. i think
+print(welcome)
 
 local default_settings = {
 	strict = true, --currently always true. Exists for future LeftButton integration
@@ -18,8 +18,8 @@ if DngMode_flags == nil then
 end
 DngMode_flags.on = false 			 --Always start game with Dungeon Mode off
 
-msg_dng_on  = "DUNGEON MODE ON - RIGHT CLICK IN COMBAT CAN ONLY TARGET ENEMIES"
-msg_dng_off = "DUNGEON MODE OFF - RIGHT CLICK IN COMBAT HAS FULL FUNCTIONALITY"
+msg_dng_on  = "|cffeeee22DUNGEON MODE ON - Right-click in combat can target ONLY ENEMIES"
+msg_dng_off = "|cffeeee22DUNGEON MODE OFF - Right-click in combat has FULL FUNCTIONALITY"
 
 function setMode(msg)
 	if msg == "on" or msg == "1" then
@@ -36,7 +36,6 @@ end
 function untarget(self,button)
 	if button == "RightButton" and DngMode_flags.on then
 		local result,_ = SecureCmdOptionParse("[@mouseover,dead][@mouseover,help]cancel;[@mouseover,harm]keep;[@mouseover,noexists]discard")
-		print(result,_)
 		if result == "cancel" and UnitAffectingCombat("player") then
 			MouselookStop()
 		elseif DngMode_flags.strict then
