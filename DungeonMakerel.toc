@@ -1,0 +1,5 @@
+## Interface: 11504
+## Title: Dungeon Makerel
+## SavedVariables: DngMode_flags
+
+DungeonMakerel.lua
