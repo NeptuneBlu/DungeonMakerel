@@ -1,4 +1,4 @@
-## Interface: 11504
+## Interface: 11501
 ## Title: Dungeon Makerel
 ## SavedVariables: DngMode_flags
 
